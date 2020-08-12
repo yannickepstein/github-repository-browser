@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
-import { GithubRepository } from '../../model/githubRepository';
 import { GithubRepositoryTranslatorService } from './githubRepositoryTranslator.service';
 
 @Injectable()
