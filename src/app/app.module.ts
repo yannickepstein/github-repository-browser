@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RepositoryBrowserComponent } from './components/respository-browser-component/repositoryBrowser.component';
 
 import { RepositoryService } from './core/services/repository.service';
+import { GithubRepositoryTranslatorService } from './core/services/githubRepositoryTranslator.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RepositoryService } from './core/services/repository.service';
     HttpClientModule,
   ],
   providers: [
-    RepositoryService
+    RepositoryService,
+    GithubRepositoryTranslatorService
   ],
   bootstrap: [AppComponent]
 })

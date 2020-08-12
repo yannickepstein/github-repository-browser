@@ -13,9 +13,9 @@ export class RepositoryBrowserComponent implements OnInit {
   constructor(private repositoryService: RepositoryService) { }
 
   ngOnInit() {
-    this.repositoryService.getFirstRepositoriesLimitedTo(20).subscribe( ({ data, loading }) => {
-      this.repositories = data && data.search.edges;
-      this.loading = loading;
+    this.repositoryService.getFirstRepositoriesLimitedTo(20).subscribe(repositories => {
+      this.repositories = repositories;
+      this.loading = false;
     }, error => {
       this.loading = false;
       this.error = error;

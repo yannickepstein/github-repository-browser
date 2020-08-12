@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { map } from 'rxjs/operators';
+import { GithubRepository } from '../../model/githubRepository';
+import { GithubRepositoryTranslatorService } from './githubRepositoryTranslator.service';
 
 @Injectable()
 export class RepositoryService {
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo,
+              private repositoryTranslatorService: GithubRepositoryTranslatorService) {}
 
   getFirstRepositoriesLimitedTo(limit: number) {
     return this.apollo.query<any>({
@@ -23,6 +27,9 @@ export class RepositoryService {
           }
         }
       `
-    });
+    })
+    .pipe(
+      map(({data}) => this.repositoryTranslatorService.translateRepositoryEdges(data.search.edges))
+    );
   }
 }
