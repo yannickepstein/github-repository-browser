@@ -1,24 +1,26 @@
 <p>Repositories</p>
 
-<div *ngIf="spinner$ | async">
+<div *ngIf="loadingRepositories$ | async">
   Loading...
 </div>
 
-<div *ngIf="error">
-  Error Occurred while fetching Repositories :(
+<div *ngIf="loadRepositoriesError$ | async as error">
+  Error Occurred while fetching Repositories: {{ error }}
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let repository of repositories">
-      <td>{{ repository.id }}</td>
-      <td>{{ repository.name }}</td>
-    </tr>
-  </tbody>
-</table>
+<ng-container *ngIf="(repositories$ | async) as repositories">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repository of repositories">
+        <td>{{ repository.id }}</td>
+        <td>{{ repository.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

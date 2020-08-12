@@ -8,7 +8,10 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
-import { spinnerReducer } from './state/spinner/spinner.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { repositoryReducer } from './state/repository/repository.reducer';
+import { RepositoryEffects } from './state/repository/repository.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { RepositoryBrowserComponent } from './components/respository-browser-component/repositoryBrowser.component';
 
@@ -26,7 +29,9 @@ import { GithubRepositoryTranslatorService } from './core/services/githubReposit
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    StoreModule.forRoot({ spinner: spinnerReducer })
+    StoreModule.forRoot({ repositories: repositoryReducer }),
+    EffectsModule.forRoot([RepositoryEffects]),
+    StoreDevtoolsModule
   ],
   providers: [
     RepositoryService,

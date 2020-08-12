@@ -2,32 +2,26 @@ import { Component, OnInit } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { loadRepositories } from 'src/app/state/repository/repository.actions';
 
-import { startSpinner, stopSpinner } from '../../state/spinner/spinner.actions';
-
-import { RepositoryService } from '../../core/services/repository.service';
+import { GithubRepository } from 'src/app/model/githubRepository';
 
 @Component({
   selector: "repository-browser",
   templateUrl: "./repositoryBrowser.component.html"
 })
 export class RepositoryBrowserComponent implements OnInit {
-  spinner$: Observable<boolean>;
-  repositories: any[];
-  loading = true;
-  error: any;
 
-  constructor(private store: Store<any>, private repositoryService: RepositoryService) { }
+  repositories$: Observable<GithubRepository[]>;
+  loadingRepositories$: Observable<boolean>;
+  loadRepositoriesError$: Observable<string>;
+
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    this.spinner$ = this.store.pipe(select(state => state.spinner.isOn));
-    this.store.dispatch(startSpinner());
-    this.repositoryService.getFirstRepositoriesLimitedTo(20).subscribe(repositories => {
-      this.repositories = repositories;
-      this.store.dispatch(stopSpinner());
-    }, error => {
-      this.store.dispatch(stopSpinner());
-      this.error = error;
-    });
+    this.repositories$ = this.store.pipe(select(state => state.repositories.items));
+    this.loadingRepositories$ = this.store.pipe(select(state => state.repositories.loading));
+    this.loadRepositoriesError$ = this.store.pipe(select(state => state.repositories.error));
+    this.store.dispatch(loadRepositories());
   }
 }
