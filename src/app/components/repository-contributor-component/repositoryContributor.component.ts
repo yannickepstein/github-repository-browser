@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { GithubUser } from '../../model/githubUser';
-import { selectUserById } from '../../state/index';
+import * as UserSelectors from '../../state/user/user.selectors';
 
 @Component({
   selector: "repository-contributor",
@@ -20,7 +19,7 @@ export class RepositoryContributorComponent implements OnInit {
 
   ngOnInit() {
     this.contributingUser$ = this.store.pipe(
-      select(selectUserById, { id: this.contributingUserId })
+      select(UserSelectors.selectUserById, { id: this.contributingUserId })
     );
   }
 }

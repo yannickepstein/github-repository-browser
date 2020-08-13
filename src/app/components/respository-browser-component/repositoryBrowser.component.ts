@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import * as RepositoryActions from 'src/app/state/repository/repository.actions';
 import * as ContributionActions from 'src/app/state/contribution/contribution.actions';
 import { GithubRepository } from 'src/app/model/githubRepository';
-import { selectAllRepositories } from 'src/app/state/index';
+import * as RepositorySelectors from 'src/app/state/repository/repository.selectors';
 
 @Component({
   selector: "repository-browser",
@@ -19,7 +20,7 @@ export class RepositoryBrowserComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.repositories$ = this.store.pipe(select(selectAllRepositories));
+    this.repositories$ = this.store.pipe(select(RepositorySelectors.selectAllRepositories));
     this.store.dispatch(RepositoryActions.loadRepositories());
   }
 

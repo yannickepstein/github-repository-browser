@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { selectAllContributingUserIdsForRepository } from '../../state/index';
+import * as ContributionSelectors from '../../state/contribution/contribution.selectors';
 
 @Component({
   selector: "repository-details",
@@ -18,7 +18,7 @@ export class RepositoryDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.contributingUserIds$ = this.store.pipe(
-      select(selectAllContributingUserIdsForRepository, { repositoryId: this.repositoryId })
+      select(ContributionSelectors.selectAllContributingUserIdsForRepository, { repositoryId: this.repositoryId })
     );
   }
 }
