@@ -19,9 +19,8 @@ export class RepositoryEffects {
               repositories: this.githubRepositoryTranslatorService.translateRepositoryEdges(data.search.edges)
             });
           })
-          // TODO handle error
+          // TODO handle error by dispatching error state
           /*catchError(errorMessage => {
-            console.log(errorMessage);
             // return of(RepositoryActions.loadRepositoriesError({errorMessage: errorMessage}));
           })*/
         )

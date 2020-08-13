@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, mergeMap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 import * as uuid from 'uuid';
 
 import { RepositoryContributionsService } from '../../core/services/repositoryContributions.service';
@@ -35,9 +34,6 @@ export class ContributionEffects {
             });
 
             return { contributingUsers: contributingUsers, contributions: contributions };
-            /*return ContributionActions.loadContributionsOfRepositoryFinished({
-              contributions: contributions
-            });*/
           }),
           mergeMap(repositoryContributions => [
             ContributionActions.loadContributionsOfRepositoryFinished({ contributions: repositoryContributions.contributions }),
