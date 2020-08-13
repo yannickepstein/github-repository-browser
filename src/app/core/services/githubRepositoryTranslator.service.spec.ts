@@ -11,11 +11,12 @@ describe('GithubRepositoryTranslatorService', () => {
   it('Translates a single repository node into a GithubRepository object', () => {
     const repositoryNode = {
       "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
-      "name": "JavaGuide"
+      "name": "JavaGuide",
+      "nameWithOwner": "user/JavaGuide"
     };
 
     const translatedRepository = githubRepositoryTranslatorService.translateRepositoryNode(repositoryNode);
-    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide");
+    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide");
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
   });
@@ -24,12 +25,13 @@ describe('GithubRepositoryTranslatorService', () => {
     const repositoryEdge = {
       "node": {
         "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
-        "name": "JavaGuide"
+        "name": "JavaGuide",
+        "nameWithOwner": "user/JavaGuide"
       }
     };
 
     const translatedRepository = githubRepositoryTranslatorService.translateRepositoryEdge(repositoryEdge);
-    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide");
+    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide");
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
   });
@@ -39,21 +41,23 @@ describe('GithubRepositoryTranslatorService', () => {
       {
         "node": {
           "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
-          "name": "JavaGuide"
+          "name": "JavaGuide",
+          "nameWithOwner": "user/JavaGuide"
         }
       },
       {
         "node": {
           "id": "MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==",
-          "name": "models"
+          "name": "models",
+          "nameWithOwner": "user/models"
         }
       }
     ];
 
     const translatedRepositories = githubRepositoryTranslatorService.translateRepositoryEdges(repositoryEdges);
     const expectedGithubRepositories = [
-      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide"),
-      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models")
+      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide"),
+      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models")
     ];
 
     expect(translatedRepositories).toEqual(expectedGithubRepositories);

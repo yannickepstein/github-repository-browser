@@ -1,26 +1,9 @@
-<p>Repositories</p>
-
-<div *ngIf="loadingRepositories$ | async">
-  Loading...
+<h1>Repositories</h1>
+<div *ngIf="(repositories$ | async) as repositories">
+  <div *ngFor="let repository of repositories">
+    <h4 (click)="toggleDetails(repository)">{{ repository.name }}</h4>
+    <div *ngIf="showDetailsOfRepository[repository.id]">
+      <repository-details [repositoryId]="repository.id"></repository-details>
+    </div>
+  </div>
 </div>
-
-<div *ngIf="loadRepositoriesError$ | async as error">
-  Error Occurred while fetching Repositories: {{ error }}
-</div>
-
-<ng-container *ngIf="(repositories$ | async) as repositories">
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let repository of repositories">
-        <td>{{ repository.id }}</td>
-        <td>{{ repository.name }}</td>
-      </tr>
-    </tbody>
-  </table>
-</ng-container>

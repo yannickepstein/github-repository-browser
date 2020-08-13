@@ -5,7 +5,11 @@ import gql from 'graphql-tag';
 @Injectable()
 export class RepositoryService {
 
-  constructor(private apollo: Apollo) {}
+  githubRestApiUrl = 'https://api.github.com/repos';
+
+  constructor(
+    private apollo: Apollo
+  ) {}
 
   getFirstRepositoriesLimitedTo(limit: number) {
     return this.apollo.query<any>({
@@ -16,7 +20,8 @@ export class RepositoryService {
               node {
                 ... on Repository {
                   id,
-                  name
+                  name,
+                  nameWithOwner
                 }
               }
             }

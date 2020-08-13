@@ -1,34 +1,30 @@
 import { GithubRepository } from '../../model/githubRepository';
 import { createReducer, on } from '@ngrx/store';
-import { loadRepositories, loadRepositoriesError, loadRepositoriesFinished } from './repository.actions';
+import { EntityState, createEntityAdapter } from '@ngrx/entity';
+import * as RepositoryActions from './repository.actions';
 
-export interface ReducerRepositoryState {
-  items: GithubRepository[],
-  loading: boolean,
-  error: string
-}
+export const repositoryAdapter = createEntityAdapter<GithubRepository>();
 
-export const initialState: ReducerRepositoryState = {
-  items: [],
-  loading: false,
-  error: null
-}
+export interface RepositoryState extends EntityState<GithubRepository> { }
+
+const initialState: RepositoryState = repositoryAdapter.getInitialState();
 
 export const repositoryReducer = createReducer(
   initialState,
-  on(loadRepositories, state => ({
-    ...state,
-    loading: true
-  })),
-  on(loadRepositoriesFinished, (state, { repositories }) => ({
-    ...state,
-    items: state.items.concat(repositories),
-    loading: false,
-    error: null
-  })),
-  on(loadRepositoriesError, (state, { errorMessage }) => ({
-    ...state,
-    loading: false,
-    error: errorMessage
-  }))
+  on(RepositoryActions.loadRepositories, state => state),
+  on(RepositoryActions.loadRepositoriesFinished, (state, { repositories }) => {
+    return repositoryAdapter.addMany(repositories, state);
+  })
 );
+
+const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = repositoryAdapter.getSelectors();
+
+export const selectRepositoryIds = selectIds;
+export const selectRepositoryEntities = selectEntities;
+export const selectAllRepositories = selectAll;
+export const selectRepositoriesTotal = selectTotal;

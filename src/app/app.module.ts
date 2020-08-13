@@ -9,19 +9,26 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { repositoryReducer } from './state/repository/repository.reducer';
 import { RepositoryEffects } from './state/repository/repository.effects';
+import { ContributionEffects } from './state/contribution/contribution.effects';
+import { reducers } from './state/index';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { RepositoryBrowserComponent } from './components/respository-browser-component/repositoryBrowser.component';
+import { RepositoryDetailsComponent } from './components/repository-details-component/repositoryDetails.component';
+import { RepositoryContributorComponent } from './components/repository-contributors-component/repositoryContributor.component';
 
 import { RepositoryService } from './core/services/repository.service';
+import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
 import { GithubRepositoryTranslatorService } from './core/services/githubRepositoryTranslator.service';
+import { GithubUserTranslatorService } from './core/services/githubUserTranslator.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepositoryBrowserComponent
+    RepositoryBrowserComponent,
+    RepositoryDetailsComponent,
+    RepositoryContributorComponent
   ],
   imports: [
     BrowserModule,
@@ -29,13 +36,15 @@ import { GithubRepositoryTranslatorService } from './core/services/githubReposit
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    StoreModule.forRoot({ repositories: repositoryReducer }),
-    EffectsModule.forRoot([RepositoryEffects]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([RepositoryEffects, ContributionEffects]),
     StoreDevtoolsModule
   ],
   providers: [
     RepositoryService,
-    GithubRepositoryTranslatorService
+    RepositoryContributionsService,
+    GithubRepositoryTranslatorService,
+    GithubUserTranslatorService
   ],
   bootstrap: [AppComponent]
 })

@@ -14,6 +14,6 @@ export class GithubRepositoryTranslatorService {
   }
 
   translateRepositoryNode(node: any): GithubRepository {
-    return new GithubRepository(node.id, node.name);
+    return new GithubRepository(node.id, node.name, node.nameWithOwner);
   }
 }
