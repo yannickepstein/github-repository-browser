@@ -1,3 +1,18 @@
-<div *ngIf="(contributingUser$ | async) as contributingUser">
-  <p>Contributor: {{ contributingUser.login }}</p>
+<div *ngIf="(contributingUser$ | async) as contributingUser" class="box">
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="{{ contributingUser.avatarUrl }}">
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ contributingUser.login }}</strong>
+          <br>
+          <small>Github Profile: {{ contributingUser.url }}</small>
+        </p>
+      </div>
+    </div>
+  </article>
 </div>

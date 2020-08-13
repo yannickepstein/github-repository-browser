@@ -9,7 +9,8 @@ import * as RepositorySelectors from 'src/app/state/repository/repository.select
 
 @Component({
   selector: "repository-browser",
-  templateUrl: "./repositoryBrowser.component.html"
+  templateUrl: "./repositoryBrowser.component.html",
+  styleUrls: ["./repositoryBrowser.component.css"]
 })
 export class RepositoryBrowserComponent implements OnInit {
 
@@ -25,12 +26,19 @@ export class RepositoryBrowserComponent implements OnInit {
   }
 
   toggleDetails(repository: GithubRepository) {
+    this.resetDetailsToggleOfAllRepositories();
     if (this.loadedRepositoryContributors[repository.id] === undefined) {
       this.loadRepositoryContributors(repository);
       this.showDetailsOfRepository[repository.id] = true;
     } else {
       this.showDetailsOfRepository[repository.id] = !this.showDetailsOfRepository[repository.id];
     }
+  }
+
+  resetDetailsToggleOfAllRepositories() {
+    Object.keys(this.showDetailsOfRepository).forEach(repositoryId => {
+      this.showDetailsOfRepository[repositoryId] = false;
+    });
   }
 
   loadRepositoryContributors(repository: GithubRepository) {
