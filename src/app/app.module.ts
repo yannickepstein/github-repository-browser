@@ -16,7 +16,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { RepositoryBrowserComponent } from './components/respository-browser-component/repositoryBrowser.component';
 import { RepositoryDetailsComponent } from './components/repository-details-component/repositoryDetails.component';
-import { RepositoryContributorComponent } from './components/repository-contributors-component/repositoryContributor.component';
+import { RepositoryContributorComponent } from './components/repository-contributor-component/repositoryContributor.component';
 
 import { RepositoryService } from './core/services/repository.service';
 import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
