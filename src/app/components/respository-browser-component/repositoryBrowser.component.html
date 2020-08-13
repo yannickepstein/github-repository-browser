@@ -1,0 +1,9 @@
+<h1>Repositories</h1>
+<div *ngIf="(repositories$ | async) as repositories">
+  <div *ngFor="let repository of repositories">
+    <h4 (click)="toggleDetails(repository)">{{ repository.name }}</h4>
+    <div *ngIf="showDetailsOfRepository[repository.id]">
+      <repository-details [repositoryId]="repository.id"></repository-details>
+    </div>
+  </div>
+</div>

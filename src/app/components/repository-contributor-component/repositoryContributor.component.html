@@ -1,0 +1,3 @@
+<div *ngIf="(contributingUser$ | async) as contributingUser">
+  <p>Contributor: {{ contributingUser.login }}</p>
+</div>
