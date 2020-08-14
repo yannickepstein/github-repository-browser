@@ -19,6 +19,8 @@ import { RepositoryDetailsComponent } from './components/repository-details-comp
 import { RepositoryContributorComponent } from './components/repository-contributor-component/repositoryContributor.component';
 import { RepositoryCardComponent } from './components/repository-card-component/repositoryCard.component';
 
+import { GithubUserUrlPipe } from './core/pipes/githubUserUrl.pipe';
+
 import { RepositoryService } from './core/services/repository.service';
 import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
 import { GithubRepositoryTranslatorService } from './core/services/githubRepositoryTranslator.service';
@@ -30,7 +32,8 @@ import { GithubUserTranslatorService } from './core/services/githubUserTranslato
     RepositoryBrowserComponent,
     RepositoryDetailsComponent,
     RepositoryContributorComponent,
-    RepositoryCardComponent
+    RepositoryCardComponent,
+    GithubUserUrlPipe
   ],
   imports: [
     BrowserModule,

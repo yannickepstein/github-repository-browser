@@ -10,7 +10,9 @@
         <p>
           <strong>{{ contributingUser.login }}</strong>
           <br>
-          <small>Github Profile: {{ contributingUser.url }}</small>
+          <a href="{{ contributingUser.login | githubUserUrl }}">
+            <small>{{ contributingUser.login | githubUserUrl }}</small>
+          </a>
         </p>
       </div>
     </div>
