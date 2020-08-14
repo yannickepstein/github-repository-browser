@@ -1,13 +1,13 @@
 <article class="media">
   <div class="media-content">
     <div class="content">
-      <p>
-        <strong>{{ repository.name }}</strong>
-        <br>
-        <a href="{{ repository.url }}">
-          <small>{{ repository.url }}</small>
-        </a>
-      </p>
+      <div class="media-content">
+        <p class="title is-4">{{ repository.name }}</p>
+        <p class="subtitle is-6">&#9733; {{ repository.stars }}</p>
+      </div>
+      <a href="{{ repository.url }}">
+        <small>{{ repository.url }}</small>
+      </a>
     </div>
   </div>
 </article>

@@ -8,8 +8,8 @@ import * as RepositorySelectors from './repository.selectors';
 describe('Test Repository Selectors', () => {
   let state: State;
   const repositories: GithubRepository[] = [
-    new GithubRepository('id1', 'name1', 'owner1/name1', ''),
-    new GithubRepository('id2', 'name2', 'owner1/name2', '')
+    new GithubRepository('id1', 'name1', 'owner1/name1', '', 0),
+    new GithubRepository('id2', 'name2', 'owner1/name2', '', 0)
   ];
 
   beforeEach(() => {

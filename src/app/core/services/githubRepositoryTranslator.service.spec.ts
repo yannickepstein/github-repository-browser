@@ -12,11 +12,15 @@ describe('GithubRepositoryTranslatorService', () => {
     const repositoryNode = {
       "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
       "name": "JavaGuide",
-      "nameWithOwner": "user/JavaGuide"
+      "nameWithOwner": "user/JavaGuide",
+      "url": "url",
+      "stargazers": {
+        "totalCount": 1000
+      }
     };
 
     const translatedRepository = githubRepositoryTranslatorService.translateRepositoryNode(repositoryNode);
-    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", '');
+    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", "url", 1000);
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
   });
@@ -26,12 +30,16 @@ describe('GithubRepositoryTranslatorService', () => {
       "node": {
         "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
         "name": "JavaGuide",
-        "nameWithOwner": "user/JavaGuide"
+        "nameWithOwner": "user/JavaGuide",
+        "url": "url",
+        "stargazers": {
+          "totalCount": 1000
+        }
       }
     };
 
     const translatedRepository = githubRepositoryTranslatorService.translateRepositoryEdge(repositoryEdge);
-    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", '');
+    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", "url", 1000);
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
   });
@@ -43,7 +51,10 @@ describe('GithubRepositoryTranslatorService', () => {
           "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
           "name": "JavaGuide",
           "nameWithOwner": "user/JavaGuide",
-          "url": "projectUrl1"
+          "url": "projectUrl1",
+          "stargazers": {
+            "totalCount": 1000
+          }
         }
       },
       {
@@ -51,15 +62,18 @@ describe('GithubRepositoryTranslatorService', () => {
           "id": "MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==",
           "name": "models",
           "nameWithOwner": "user/models",
-          "url": "projectUrl2"
+          "url": "projectUrl2",
+          "stargazers": {
+            "totalCount": 5000
+          }
         }
       }
     ];
 
     const translatedRepositories = githubRepositoryTranslatorService.translateRepositoryEdges(repositoryEdges);
     const expectedGithubRepositories = [
-      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", 'projectUrl2'),
-      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models", 'projectUrl1')
+      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", 'projectUrl2', 1000),
+      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models", 'projectUrl1', 5000)
     ];
 
     expect(translatedRepositories).toEqual(expectedGithubRepositories);

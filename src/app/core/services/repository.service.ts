@@ -22,7 +22,10 @@ export class RepositoryService {
                   id,
                   name,
                   nameWithOwner,
-                  url
+                  url,
+                  stargazers {
+                    totalCount
+                  }
                 }
               }
             }
