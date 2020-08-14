@@ -72,8 +72,8 @@ describe('GithubRepositoryTranslatorService', () => {
 
     const translatedRepositories = githubRepositoryTranslatorService.translateRepositoryEdges(repositoryEdges);
     const expectedGithubRepositories = [
-      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", 'projectUrl2', 1000),
-      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models", 'projectUrl1', 5000)
+      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", 'projectUrl1', 1000),
+      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models", 'projectUrl2', 5000)
     ];
 
     expect(translatedRepositories).toEqual(expectedGithubRepositories);
