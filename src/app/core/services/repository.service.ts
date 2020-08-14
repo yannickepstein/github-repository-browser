@@ -11,11 +11,11 @@ export class RepositoryService {
     private apollo: Apollo
   ) {}
 
-  getFirstRepositoriesLimitedTo(limit: number) {
+  getTopStarredRepositoriesLimitedTo(limit: number) {
     return this.apollo.query<any>({
       query: gql`
         {
-          search(query: "is:public", type: REPOSITORY, first: ${limit}) {
+          search(query: "is:public stars:>1600", type: REPOSITORY, first: ${limit}) {
             edges {
               node {
                 ... on Repository {

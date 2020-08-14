@@ -13,7 +13,7 @@ export class RepositoryEffects {
     return this.actions$.pipe(
       ofType(RepositoryActions.loadRepositories),
       switchMap(() => {
-        return this.repositoryService.getFirstRepositoriesLimitedTo(50).pipe(
+        return this.repositoryService.getTopStarredRepositoriesLimitedTo(50).pipe(
           map(({data}) => {
             return RepositoryActions.loadRepositoriesFinished({
               repositories: this.githubRepositoryTranslatorService.translateRepositoryEdges(data.search.edges)
