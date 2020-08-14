@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IGithubUserResponse, GithubUser } from '../../model/githubUser';
+import { IGithubUserContributionResponse } from '../../model/githubContribution';
 
 @Injectable()
 export class RepositoryContributionsService {
@@ -15,6 +15,6 @@ export class RepositoryContributionsService {
   // of a repository from the repository node easliy. 
   // So we rely on the REST endpoint to do so.
   getTopContributorsOfRepository(repoNameWithOwner: string) {
-    return this.httpClient.get<IGithubUserResponse[]>(`${this.githubRestApiUrl}/${repoNameWithOwner}/contributors`);
+    return this.httpClient.get<IGithubUserContributionResponse[]>(`${this.githubRestApiUrl}/${repoNameWithOwner}/contributors`);
   }
 }

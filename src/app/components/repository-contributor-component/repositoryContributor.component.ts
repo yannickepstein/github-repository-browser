@@ -12,6 +12,7 @@ import * as UserSelectors from '../../state/user/user.selectors';
 export class RepositoryContributorComponent implements OnInit {
 
   @Input() contributingUserId: string;
+  @Input() numberOfContributions: number;
 
   contributingUser$: Observable<GithubUser>;
 

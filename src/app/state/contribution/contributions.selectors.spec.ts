@@ -7,7 +7,7 @@ import { GithubRepository } from 'src/app/model/githubRepository';
 import { GithubContribution } from 'src/app/model/githubContribution';
 import * as ContributionSelectors from './contribution.selectors';
 
-describe('Test User Selectors', () => {
+describe('Test Contribution Selectors', () => {
   let state: State;
   const repositories: GithubRepository[] = [
     new GithubRepository('repoId1', 'name1', 'owner1/name1', '', 0),
@@ -18,13 +18,16 @@ describe('Test User Selectors', () => {
     new GithubUser('userId2', 'login2', 'avatarUrl2', 'url2')
   ];
   const contributions: GithubContribution[] = [
-    { id: 'contribId1', repositoryId: 'repoId1', userId: 'userId2' }
+    { id: 'contribId1', repositoryId: 'repoId1', userId: 'userId2', number: 1 }
   ];
 
   beforeEach(() => {
     const repositoryState: RepositoryState = {
       ids: ['repoId1', 'repoId2'],
-      entities: {}
+      entities: {
+        repoId1: repositories[0],
+        repoId2: repositories[1]
+      }
     };
     const userState: UserState = {
       ids: ['userId1', 'usersId2'],
@@ -48,6 +51,13 @@ describe('Test User Selectors', () => {
 
   it('Should return all contributions', () => {
     expect(ContributionSelectors.selectAllContributions(state)).toEqual(contributions);
+  });
+
+  it('Should select all contributions belong to the given repository-ID', () => {
+    expect(ContributionSelectors.selectAllContributionsForRepository(state, { repositoryId: 'repoId1' }))
+      .toEqual([contributions[0]]);
+    expect(ContributionSelectors.selectAllContributionsForRepository(state, { repositoryId: 'repoId2' }))
+      .toEqual([]);
   });
 
   it('Shoud select all contributions belonging to the given repository-ID', () => {

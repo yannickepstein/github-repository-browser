@@ -10,6 +10,13 @@ export const selectAllContributions = createSelector(
   fromContribution.selectAllContributions
 );
 
+export const selectAllContributionsForRepository = createSelector(
+  selectAllContributions,
+  (contributions: GithubContribution[], props: { repositoryId: string }) => {
+    return contributions.filter(contribution => contribution.repositoryId === props.repositoryId);
+  }
+)
+
 export const selectAllContributingUserIdsForRepository = createSelector(
   selectAllContributions,
   (contributions: GithubContribution[], props: { repositoryId: string }) => {

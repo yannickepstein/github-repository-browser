@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as ContributionSelectors from '../../state/contribution/contribution.selectors';
+import { GithubContribution } from 'src/app/model/githubContribution';
 
 @Component({
   selector: "repository-details",
@@ -12,13 +13,13 @@ export class RepositoryDetailsComponent implements OnInit {
 
   @Input() repositoryId: string;
 
-  contributingUserIds$: Observable<string[]>;
+  contributionsForRepository$: Observable<GithubContribution[]>;
 
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.contributingUserIds$ = this.store.pipe(
-      select(ContributionSelectors.selectAllContributingUserIdsForRepository, { repositoryId: this.repositoryId })
+    this.contributionsForRepository$ = this.store.pipe(
+      select(ContributionSelectors.selectAllContributionsForRepository, { repositoryId: this.repositoryId })
     );
   }
 }

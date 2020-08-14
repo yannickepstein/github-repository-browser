@@ -24,7 +24,7 @@ import { GithubUserUrlPipe } from './core/pipes/githubUserUrl.pipe';
 import { RepositoryService } from './core/services/repository.service';
 import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
 import { GithubRepositoryTranslatorService } from './core/services/githubRepositoryTranslator.service';
-import { GithubUserTranslatorService } from './core/services/githubUserTranslator.service';
+import { GithubUserContributionTranslatorService } from './core/services/githubUserContributionTranslator.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { GithubUserTranslatorService } from './core/services/githubUserTranslato
     RepositoryService,
     RepositoryContributionsService,
     GithubRepositoryTranslatorService,
-    GithubUserTranslatorService
+    GithubUserContributionTranslatorService
   ],
   bootstrap: [AppComponent]
 })

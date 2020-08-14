@@ -4,7 +4,7 @@ import { map, switchMap, mergeMap, catchError } from 'rxjs/operators';
 import * as uuid from 'uuid';
 
 import { RepositoryContributionsService } from '../../core/services/repositoryContributions.service';
-import { GithubUserTranslatorService } from '../../core/services/githubUserTranslator.service';
+import { GithubUserContributionTranslatorService } from '../../core/services/githubUserContributionTranslator.service';
 import * as ContributionActions from './contribution.actions';
 import * as UserActions from '../user/user.actions';
 import { GithubUser } from '../../model/githubUser';
@@ -16,7 +16,7 @@ export class ContributionEffects {
   constructor(
     private actions$: Actions,
     private repositoryContributionsService: RepositoryContributionsService,
-    private githubUserTranslatorService: GithubUserTranslatorService
+    private githubUserContributionTranslatorService: GithubUserContributionTranslatorService
   ) {}
 
   loadContributorsOfRepository = createEffect(() => {
@@ -25,12 +25,12 @@ export class ContributionEffects {
       switchMap(action => {
         return this.repositoryContributionsService.getTopContributorsOfRepository(action.repositoryNameAndOwner).pipe(
           map(data => {
-            const contributingUsers: GithubUser[] = data.map(rawGithubUser => {
-              return this.githubUserTranslatorService.translateGithubUser(rawGithubUser)
+            const contributingUsers: GithubUser[] = data.map(githubUserContribution => {
+              return this.githubUserContributionTranslatorService.translateGithubUserContributionToUser(githubUserContribution)
             });
 
-            const contributions: GithubContribution[]  = contributingUsers.map(contributingUser => {
-              return { id: uuid.v4(), repositoryId: action.repositoryId, userId: contributingUser.id }
+            const contributions: GithubContribution[]  = data.map(contributinUserResponse => {
+              return { id: uuid.v4(), repositoryId: action.repositoryId, userId: contributinUserResponse.id, number: contributinUserResponse.contributions }
             });
 
             return { contributingUsers: contributingUsers, contributions: contributions };
