@@ -16,7 +16,7 @@ describe('GithubRepositoryTranslatorService', () => {
     };
 
     const translatedRepository = githubRepositoryTranslatorService.translateRepositoryNode(repositoryNode);
-    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide");
+    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", '');
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
   });
@@ -31,7 +31,7 @@ describe('GithubRepositoryTranslatorService', () => {
     };
 
     const translatedRepository = githubRepositoryTranslatorService.translateRepositoryEdge(repositoryEdge);
-    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide");
+    const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", '');
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
   });
@@ -42,22 +42,24 @@ describe('GithubRepositoryTranslatorService', () => {
         "node": {
           "id": "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
           "name": "JavaGuide",
-          "nameWithOwner": "user/JavaGuide"
+          "nameWithOwner": "user/JavaGuide",
+          "url": "projectUrl1"
         }
       },
       {
         "node": {
           "id": "MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==",
           "name": "models",
-          "nameWithOwner": "user/models"
+          "nameWithOwner": "user/models",
+          "url": "projectUrl2"
         }
       }
     ];
 
     const translatedRepositories = githubRepositoryTranslatorService.translateRepositoryEdges(repositoryEdges);
     const expectedGithubRepositories = [
-      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide"),
-      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models")
+      new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", 'projectUrl2'),
+      new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models", 'projectUrl1')
     ];
 
     expect(translatedRepositories).toEqual(expectedGithubRepositories);

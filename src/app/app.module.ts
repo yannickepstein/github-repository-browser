@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RepositoryBrowserComponent } from './components/respository-browser-component/repositoryBrowser.component';
 import { RepositoryDetailsComponent } from './components/repository-details-component/repositoryDetails.component';
 import { RepositoryContributorComponent } from './components/repository-contributor-component/repositoryContributor.component';
+import { RepositoryCardComponent } from './components/repository-card-component/repositoryCard.component';
 
 import { RepositoryService } from './core/services/repository.service';
 import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
@@ -28,7 +29,8 @@ import { GithubUserTranslatorService } from './core/services/githubUserTranslato
     AppComponent,
     RepositoryBrowserComponent,
     RepositoryDetailsComponent,
-    RepositoryContributorComponent
+    RepositoryContributorComponent,
+    RepositoryCardComponent
   ],
   imports: [
     BrowserModule,

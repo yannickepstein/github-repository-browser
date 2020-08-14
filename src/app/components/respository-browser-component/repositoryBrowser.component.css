@@ -1,6 +1,4 @@
-.scrollable-container {
-  height: 700px;
-  display: flex;
-  overflow-y: auto;
-  flex-direction: column;;
+.scrollable-column {
+  height: 90vh;
+  overflow: scroll;
 }

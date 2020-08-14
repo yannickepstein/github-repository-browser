@@ -21,7 +21,8 @@ export class RepositoryService {
                 ... on Repository {
                   id,
                   name,
-                  nameWithOwner
+                  nameWithOwner,
+                  url
                 }
               }
             }

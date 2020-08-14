@@ -1,6 +1,8 @@
-<h4>Details</h4>
+<h4 class="title">Top Contributors</h4>
 <div *ngIf="(contributingUserIds$ | async) as contributingUserIds">
   <div *ngFor="let contributingUserId of contributingUserIds">
-    <repository-contributor [contributingUserId]="contributingUserId"></repository-contributor>
+    <div class="box" style="margin-bottom: 10px;">
+      <repository-contributor [contributingUserId]="contributingUserId"></repository-contributor>
+    </div>
   </div>
 </div>

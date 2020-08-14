@@ -10,8 +10,8 @@ import * as ContributionSelectors from './contribution.selectors';
 describe('Test User Selectors', () => {
   let state: State;
   const repositories: GithubRepository[] = [
-    new GithubRepository('repoId1', 'name1', 'owner1/name1'),
-    new GithubRepository('repoId2', 'name2', 'owner1/name2')
+    new GithubRepository('repoId1', 'name1', 'owner1/name1', ''),
+    new GithubRepository('repoId2', 'name2', 'owner1/name2', '')
   ];
   const users: GithubUser[] = [
     new GithubUser('userId1', 'login1', 'avatarUrl1', 'url1'),

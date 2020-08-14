@@ -24,9 +24,9 @@ describe('Repository State Reducer', () => {
   });
 
   it('Reducing Load Finished updates items in state', () => {
-    const repository1 = new GithubRepository('id1', 'name1', "user/name1");
-    const repository2 = new GithubRepository('id2', 'name2', "user/name2");
-    const repository3 = new GithubRepository('id3', 'name3', "user/name3");
+    const repository1 = new GithubRepository('id1', 'name1', "user/name1", '');
+    const repository2 = new GithubRepository('id2', 'name2', "user/name2", '');
+    const repository3 = new GithubRepository('id3', 'name3', "user/name3", '');
     const initialEntities = {};
     initialEntities[repository1.id] = repository1;
     const initialState: RepositoryState = {

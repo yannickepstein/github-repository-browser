@@ -12,7 +12,7 @@ describe('Repository State Actions', () => {
 
   it('Load Repositories Finished has correct type and payload', () => {
     const repositories = [
-      new GithubRepository('id', 'name', "user/name")
+      new GithubRepository('id', 'name', "user/name", '')
     ];
 
     const action = RepositoryActions.loadRepositoriesFinished({ repositories: repositories });
