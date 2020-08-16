@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { InMemoryCache } from '@apollo/client/core';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
-import { ApolloLink, concat } from 'apollo-link';
+import { ApolloLink } from 'apollo-link';
 import { HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
