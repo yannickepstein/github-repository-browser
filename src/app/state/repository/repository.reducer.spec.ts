@@ -14,7 +14,8 @@ describe('Repository State Reducer', () => {
   it('Reducing Load Action does not modify state', () => {
     const initialState: RepositoryState = {
       ids: [],
-      entities: {}
+      entities: {},
+      searchTerm: undefined
     };
 
     const state = repositoryReducer(initialState, RepositoryActions.loadRepositories());
@@ -31,7 +32,8 @@ describe('Repository State Reducer', () => {
     initialEntities[repository1.id] = repository1;
     const initialState: RepositoryState = {
       ids: [repository1.id],
-      entities: getRepositoryEntities([repository1])
+      entities: getRepositoryEntities([repository1]),
+      searchTerm: undefined
     };
     const loadedRepositories = [
       repository2,
@@ -41,10 +43,35 @@ describe('Repository State Reducer', () => {
     const state = repositoryReducer(initialState, RepositoryActions.loadRepositoriesFinished({ repositories: loadedRepositories }));
     const expectedState: RepositoryState = {
       ids: [repository1.id, repository2.id, repository3.id],
-      entities: getRepositoryEntities([repository1, repository2, repository3])
+      entities: getRepositoryEntities([repository1, repository2, repository3]),
+      searchTerm: undefined
     };
 
     expect(state.ids).toEqual(expectedState.ids);
     expect(state.entities).toEqual(expectedState.entities);
   });
+
+  it('Does not have a defined search term, if searchTerm is empty', () => {
+    const initialState: RepositoryState = {
+      ids: [],
+      entities: {},
+      searchTerm: undefined
+    };
+
+    const state = repositoryReducer(initialState, RepositoryActions.filterRepositories({ searchTerm: '' }));
+
+    expect(state.searchTerm).toEqual(undefined);
+  });
+
+  it('Sets search term correctly, if search term is not empty', () => {
+    const initialState: RepositoryState = {
+      ids: [],
+      entities: {},
+      searchTerm: undefined
+    };
+
+    const state = repositoryReducer(initialState, RepositoryActions.filterRepositories({ searchTerm: 'search' }));
+
+    expect(state.searchTerm).toEqual('search');
+  })
 });

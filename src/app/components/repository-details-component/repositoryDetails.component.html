@@ -1,7 +1,8 @@
-<h4 class="title">Top Contributors</h4>
+<label class="label">Details</label>
+<repository-details-navbar></repository-details-navbar>
 <div *ngIf="(contributionsForRepository$ | async) as contributions" class="scrollable-container">
   <div *ngFor="let contribution of contributions">
-    <div class="box" style="margin-bottom: 10px;">
+    <div class="box" style="margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">
       <repository-contributor
         [contributingUserId]="contribution.userId"
         [numberOfContributions]="contribution.number"

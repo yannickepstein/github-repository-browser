@@ -27,7 +27,8 @@ describe('Test Contribution Selectors', () => {
       entities: {
         repoId1: repositories[0],
         repoId2: repositories[1]
-      }
+      },
+      searchTerm: undefined
     };
     const userState: UserState = {
       ids: ['userId1', 'usersId2'],

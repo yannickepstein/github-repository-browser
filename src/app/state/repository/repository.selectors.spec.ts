@@ -18,7 +18,8 @@ describe('Test Repository Selectors', () => {
       entities: {
         id1: repositories[0],
         id2: repositories[1] 
-      }
+      },
+      searchTerm: 'abc'
     };
     const userState: UserState = {
       ids: [],
@@ -37,5 +38,9 @@ describe('Test Repository Selectors', () => {
 
   it('should select all repositories from the state', () => {
     expect(RepositorySelectors.selectAllRepositories(state)).toEqual(repositories);
+  });
+
+  it('selects the searchterm for repositories', () => {
+    expect(RepositorySelectors.selectRepositorySearchTerm(state)).toEqual('abc');
   });
 });

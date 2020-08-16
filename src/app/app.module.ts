@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,8 +19,11 @@ import { RepositoryBrowserComponent } from './components/respository-browser-com
 import { RepositoryDetailsComponent } from './components/repository-details-component/repositoryDetails.component';
 import { RepositoryContributorComponent } from './components/repository-contributor-component/repositoryContributor.component';
 import { RepositoryCardComponent } from './components/repository-card-component/repositoryCard.component';
+import { RepositorySearchComponent } from './components/repository-search-component/repositorySearch.component';
+import { RepostioryDetailsNavbarComponent } from './components/repository-details-navbar-component/repositoryDetailsNavbar.component';
 
 import { GithubUserUrlPipe } from './core/pipes/githubUserUrl.pipe';
+import { RepositoryFilterPipe } from './core/pipes/repositoryFilter.pipe';
 
 import { RepositoryService } from './core/services/repository.service';
 import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
@@ -33,11 +37,15 @@ import { GithubUserContributionTranslatorService } from './core/services/githubU
     RepositoryDetailsComponent,
     RepositoryContributorComponent,
     RepositoryCardComponent,
-    GithubUserUrlPipe
+    RepositorySearchComponent,
+    RepostioryDetailsNavbarComponent,
+    GithubUserUrlPipe,
+    RepositoryFilterPipe
   ],
   imports: [
     BrowserModule,
     CommonModule,
+    FormsModule,
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,

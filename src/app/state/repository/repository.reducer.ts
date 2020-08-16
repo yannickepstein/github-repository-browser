@@ -5,15 +5,26 @@ import * as RepositoryActions from './repository.actions';
 
 export const repositoryAdapter = createEntityAdapter<GithubRepository>();
 
-export interface RepositoryState extends EntityState<GithubRepository> { }
+export interface RepositoryState extends EntityState<GithubRepository> {
+  searchTerm: string;
+}
 
-const initialState: RepositoryState = repositoryAdapter.getInitialState();
+const initialState: RepositoryState = {
+  searchTerm: undefined,
+  ...repositoryAdapter.getInitialState()
+};
 
 export const repositoryReducer = createReducer(
   initialState,
   on(RepositoryActions.loadRepositories, state => state),
   on(RepositoryActions.loadRepositoriesFinished, (state, { repositories }) => {
     return repositoryAdapter.addMany(repositories, state);
+  }),
+  on(RepositoryActions.filterRepositories, (state, { searchTerm }) => {
+    return {
+      ...state,
+      searchTerm: searchTerm === '' ? undefined : searchTerm
+    }
   })
 );
 

@@ -4,6 +4,7 @@ import { GithubRepository } from 'src/app/model/githubRepository';
 export enum RepositoryActionTypes {
   LoadRepositories = '[Repository] Load Repositories',
   LoadRepositoriesFinished = '[Repository] Load Repositories Finished',
+  FilterRepositories = '[Repository] Filter repositories'
 }
 
 export const loadRepositories = createAction(
@@ -13,4 +14,9 @@ export const loadRepositories = createAction(
 export const loadRepositoriesFinished = createAction(
   RepositoryActionTypes.LoadRepositoriesFinished,
   props<{ repositories: GithubRepository[] }>()
+);
+
+export const filterRepositories = createAction(
+  RepositoryActionTypes.FilterRepositories,
+  props<{ searchTerm: string }>()
 );

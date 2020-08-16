@@ -1,6 +1,7 @@
-import { GithubContribution } from '../../model/githubContribution';
 import { createReducer, on } from '@ngrx/store';
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
+
+import { GithubContribution } from '../../model/githubContribution';
 import * as ContributionActions from './contribution.actions';
 
 export const contributionAdapter = createEntityAdapter<GithubContribution>();

@@ -15,7 +15,8 @@ describe('Test User Selectors', () => {
   beforeEach(() => {
     const repositoryState: RepositoryState = {
       ids: [],
-      entities: {}
+      entities: {},
+      searchTerm: undefined
     };
     const userState: UserState = {
       ids: ['id1', 'id2'],

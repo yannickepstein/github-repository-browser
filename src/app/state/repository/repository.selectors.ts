@@ -8,3 +8,8 @@ export const selectAllRepositories = createSelector(
   selectRepositoryState,
   fromRepository.selectAllRepositories
 );
+
+export const selectRepositorySearchTerm = createSelector(
+  selectRepositoryState,
+  (state: fromRepository.RepositoryState) => state.searchTerm
+);

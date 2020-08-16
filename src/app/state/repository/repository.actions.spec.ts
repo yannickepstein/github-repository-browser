@@ -5,9 +5,8 @@ import { GithubRepository } from '../../model/githubRepository';
 describe('Repository State Actions', () => {
   it('Load Repositories has correct type', () => {
     const action = RepositoryActions.loadRepositories();
-    const expectedType = RepositoryActionTypes.LoadRepositories;
 
-    expect(action.type).toEqual(expectedType);
+    expect(action.type).toEqual(RepositoryActionTypes.LoadRepositories);
   });
 
   it('Load Repositories Finished has correct type and payload', () => {
@@ -16,9 +15,15 @@ describe('Repository State Actions', () => {
     ];
 
     const action = RepositoryActions.loadRepositoriesFinished({ repositories: repositories });
-    const expectedType = RepositoryActionTypes.LoadRepositoriesFinished;
 
-    expect(action.type).toEqual(expectedType);
+    expect(action.type).toEqual(RepositoryActionTypes.LoadRepositoriesFinished);
     expect(action.repositories).toEqual(repositories);
   });
+
+  it('Filter Repositories should have correct type and payload', () => {
+    const action = RepositoryActions.filterRepositories({ searchTerm: 'search' });
+    
+    expect(action.type).toEqual(RepositoryActionTypes.FilterRepositories);
+    expect(action.searchTerm).toEqual('search');
+  })
 });

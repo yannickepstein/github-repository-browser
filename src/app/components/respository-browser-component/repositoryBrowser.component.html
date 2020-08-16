@@ -1,16 +1,19 @@
 <div class="columns is-3 app-content">
   <div class="column is-one-third">
-    <h1 class="title">Repositories</h1>
+    <div style="margin-bottom: 10px;">
+      <label class="label">Repositories</label>
+      <repository-search></repository-search>
+    </div>
     <div class="scrollable-container">
       <div *ngIf="(repositories$ | async) as repositories">
-        <div *ngFor="let repository of repositories">
+        <div *ngFor="let repository of repositories | repositoryFilter: (repositorySearchTerm$ | async)">
           <div
             (click)="toggleDetails(repository)"
           >
             <div
               class="box"
               [ngClass]="showDetailsOfRepository[repository.id] ? 'has-background-primary' : ''"
-              style="margin-bottom: 10px;"
+              style="margin-bottom: 10px; margin-right: 10px; margin-left: 10px;"
             >
               <repository-card [repository]="repository"></repository-card>
             </div>

@@ -1,0 +1,16 @@
+<div class="field has-addons">
+  <div class="control">
+    <input
+      class="input"
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Filter repositories"
+      (input)="updateRepositoryFilter()"
+    >
+  </div>
+  <div class="control">
+    <a class="button is-info" (click)="updateRepositoryFilter()">
+      Search
+    </a>
+  </div>
+</div>

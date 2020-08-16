@@ -14,6 +14,7 @@ import * as RepositorySelectors from 'src/app/state/repository/repository.select
 export class RepositoryBrowserComponent implements OnInit {
 
   repositories$: Observable<GithubRepository[]>;
+  repositorySearchTerm$: Observable<string>;
   loadedRepositoryContributors: { [id: string]: boolean } = {};
   showDetailsOfRepository: { [id: string]: boolean } = {};
 
@@ -21,6 +22,7 @@ export class RepositoryBrowserComponent implements OnInit {
 
   ngOnInit() {
     this.repositories$ = this.store.pipe(select(RepositorySelectors.selectAllRepositories));
+    this.repositorySearchTerm$ = this.store.pipe(select(RepositorySelectors.selectRepositorySearchTerm));
     this.store.dispatch(RepositoryActions.loadRepositories());
   }
 
