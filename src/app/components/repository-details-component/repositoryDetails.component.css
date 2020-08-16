@@ -1,0 +1,4 @@
+.scrollable-column {
+  height: 90vh;
+  overflow: scroll;
+}

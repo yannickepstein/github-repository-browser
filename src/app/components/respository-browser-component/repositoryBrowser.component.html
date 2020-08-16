@@ -1,23 +1,26 @@
 <div class="columns is-3 app-content">
   <div class="column is-one-third scrollable-column">
     <h1 class="title">Repositories</h1>
-    <div *ngIf="(repositories$ | async) as repositories" class="scrollable-container">
-      <div *ngFor="let repository of repositories">
-        <div
-          (click)="toggleDetails(repository)"
-        >
+    <div class="scrollable-column">
+      <div *ngIf="(repositories$ | async) as repositories" class="scrollable-container">
+        <div *ngFor="let repository of repositories">
           <div
-            class="box"
-            [ngClass]="showDetailsOfRepository[repository.id] ? 'has-background-primary' : ''"
-            style="margin-bottom: 10px;"
+            (click)="toggleDetails(repository)"
           >
-            <repository-card [repository]="repository"></repository-card>
+            <div
+              class="box"
+              [ngClass]="showDetailsOfRepository[repository.id] ? 'has-background-primary' : ''"
+              style="margin-bottom: 10px;"
+            >
+              <repository-card [repository]="repository"></repository-card>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="column is-two-thirds scrollable-column">
+    
+  <div class="column is-two-thirds">
     <div *ngIf="(repositories$ | async) as repositories">
       <div *ngFor="let repository of repositories">
         <div *ngIf="showDetailsOfRepository[repository.id]" class="scrollable-container">

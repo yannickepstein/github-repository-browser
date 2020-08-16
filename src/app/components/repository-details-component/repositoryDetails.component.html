@@ -1,5 +1,5 @@
 <h4 class="title">Top Contributors</h4>
-<div *ngIf="(contributionsForRepository$ | async) as contributions">
+<div *ngIf="(contributionsForRepository$ | async) as contributions" class="scrollable-column">
   <div *ngFor="let contribution of contributions">
     <div class="box" style="margin-bottom: 10px;">
       <repository-contributor
