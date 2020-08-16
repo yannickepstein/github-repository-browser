@@ -9,8 +9,7 @@ import * as RepositorySelectors from 'src/app/state/repository/repository.select
 
 @Component({
   selector: "repository-browser",
-  templateUrl: "./repositoryBrowser.component.html",
-  styleUrls: ["./repositoryBrowser.component.css"]
+  templateUrl: "./repositoryBrowser.component.html"
 })
 export class RepositoryBrowserComponent implements OnInit {
 

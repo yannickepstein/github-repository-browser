@@ -7,8 +7,7 @@ import { GithubContribution } from 'src/app/model/githubContribution';
 
 @Component({
   selector: "repository-details",
-  templateUrl: "./repositoryDetails.component.html",
-  styleUrls: ["./repositoryDetails.component.css"]
+  templateUrl: "./repositoryDetails.component.html"
 })
 export class RepositoryDetailsComponent implements OnInit {
 
