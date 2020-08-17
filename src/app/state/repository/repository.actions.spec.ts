@@ -25,5 +25,12 @@ describe('Repository State Actions', () => {
     
     expect(action.type).toEqual(RepositoryActionTypes.FilterRepositories);
     expect(action.searchTerm).toEqual('search');
-  })
+  });
+
+  it('Select repository should have correct type and payload', () => {
+    const action = RepositoryActions.selectRepository({ repositoryId: 'id' });
+
+    expect(action.type).toEqual(RepositoryActionTypes.SelectRepository);
+    expect(action.repositoryId).toEqual('id');
+  });
 });

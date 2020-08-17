@@ -78,5 +78,24 @@ describe('Repository State Reducer', () => {
     const state = repositoryReducer(initialState, RepositoryActions.filterRepositories({ searchTerm: 'search' }));
 
     expect(state.searchTerm).toEqual('search');
-  })
+    expect(state.selectedRepositoryId).toEqual(initialState.selectedRepositoryId);
+    expect(state.ids).toEqual(initialState.ids);
+    expect(state.entities).toEqual(initialState.entities);
+  });
+
+  it('Selecting a repository should add the corresponding id to the state', () => {
+    const initialState: RepositoryState = {
+      ids: [],
+      entities: {},
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
+    };
+
+    const state = repositoryReducer(initialState, RepositoryActions.selectRepository({ repositoryId: 'id' }));
+
+    expect(state.selectedRepositoryId).toEqual('id');
+    expect(state.ids).toEqual(initialState.ids);
+    expect(state.entities).toEqual(initialState.entities);
+    expect(state.searchTerm).toEqual(initialState.searchTerm);
+  });
 });

@@ -13,3 +13,8 @@ export const selectRepositorySearchTerm = createSelector(
   selectRepositoryState,
   (state: fromRepository.RepositoryState) => state.searchTerm
 );
+
+export const selectSelectedRepositoryId = createSelector(
+  selectRepositoryState,
+  (state: fromRepository.RepositoryState) => state.selectedRepositoryId
+);

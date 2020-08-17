@@ -15,35 +15,26 @@ export class RepositoryBrowserComponent implements OnInit {
 
   repositories$: Observable<GithubRepository[]>;
   repositorySearchTerm$: Observable<string>;
+  selectedRepositoryId$: Observable<string>;
   loadedRepositoryContributors: { [id: string]: boolean } = {};
-  showDetailsOfRepository: { [id: string]: boolean } = {};
 
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
     this.repositories$ = this.store.pipe(select(RepositorySelectors.selectAllRepositories));
     this.repositorySearchTerm$ = this.store.pipe(select(RepositorySelectors.selectRepositorySearchTerm));
+    this.selectedRepositoryId$ = this.store.pipe(select(RepositorySelectors.selectSelectedRepositoryId));
     this.store.dispatch(RepositoryActions.loadRepositories());
   }
 
   toggleDetails(repository: GithubRepository) {
-    this.resetDetailsToggleOfAllRepositories();
     if (this.loadedRepositoryContributors[repository.id] === undefined) {
       this.loadRepositoryContributors(repository);
-      this.showDetailsOfRepository[repository.id] = true;
-    } else {
-      this.showDetailsOfRepository[repository.id] = !this.showDetailsOfRepository[repository.id];
     }
-  }
-
-  resetDetailsToggleOfAllRepositories() {
-    Object.keys(this.showDetailsOfRepository).forEach(repositoryId => {
-      this.showDetailsOfRepository[repositoryId] = false;
-    });
+    this.store.dispatch(RepositoryActions.selectRepository({ repositoryId: repository.id }));
   }
 
   loadRepositoryContributors(repository: GithubRepository) {
     this.store.dispatch(ContributionActions.loadContributionsOfRepository({ repositoryId: repository.id, repositoryNameAndOwner: repository.nameWithOwner }));
-    this.loadedRepositoryContributors[repository.id] = true;
   }
 }

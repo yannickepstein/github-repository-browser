@@ -12,7 +12,7 @@
           >
             <div
               class="box"
-              [ngClass]="showDetailsOfRepository[repository.id] ? 'has-background-primary' : ''"
+              [ngClass]="(selectedRepositoryId$ | async) === repository.id ? 'has-background-primary' : ''"
               style="margin-bottom: 10px; margin-right: 10px; margin-left: 10px;"
             >
               <repository-card [repository]="repository"></repository-card>
@@ -26,7 +26,7 @@
   <div class="column is-two-thirds">
     <div *ngIf="(repositories$ | async) as repositories">
       <div *ngFor="let repository of repositories">
-        <div *ngIf="showDetailsOfRepository[repository.id]">
+        <div *ngIf="(selectedRepositoryId$ | async) === repository.id">
           <repository-details [repositoryId]="repository.id"></repository-details>
         </div>
       </div>

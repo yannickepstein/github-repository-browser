@@ -20,7 +20,7 @@ describe('Test Repository Selectors', () => {
         id2: repositories[1] 
       },
       searchTerm: 'abc',
-      selectedRepositoryId: undefined
+      selectedRepositoryId: 'id'
     };
     const userState: UserState = {
       ids: [],
@@ -44,4 +44,8 @@ describe('Test Repository Selectors', () => {
   it('selects the searchterm for repositories', () => {
     expect(RepositorySelectors.selectRepositorySearchTerm(state)).toEqual('abc');
   });
+
+  it('Should return the currently selected repository id', () => {
+    expect(RepositorySelectors.selectSelectedRepositoryId(state)).toEqual('id');
+  })
 });
