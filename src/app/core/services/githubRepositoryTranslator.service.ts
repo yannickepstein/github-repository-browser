@@ -5,15 +5,15 @@ import { GithubRepository } from '../../model/githubRepository';
 @Injectable()
 export class GithubRepositoryTranslatorService {
 
-  translateRepositoryEdges(edges: any): GithubRepository[] {
-    return edges.map(edge => this.translateRepositoryEdge(edge));
+  translateToGithubRepositories(edges: any): GithubRepository[] {
+    return edges.map(edge => this.translateEdgeToGithubRepository(edge));
   }
 
-  translateRepositoryEdge(edge: any): GithubRepository {
-    return this.translateRepositoryNode(edge.node);
+  translateEdgeToGithubRepository(edge: any): GithubRepository {
+    return this.translateNodeToGithubRepository(edge.node);
   }
 
-  translateRepositoryNode(node: any): GithubRepository {
+  translateNodeToGithubRepository(node: any): GithubRepository {
     return new GithubRepository(node.id, node.name, node.nameWithOwner, node.url, node.stargazers.totalCount);
   }
 }

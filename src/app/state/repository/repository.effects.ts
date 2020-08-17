@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { RepositoryService } from '../../core/services/repository.service';
 import { GithubRepositoryTranslatorService } from '../../core/services/githubRepositoryTranslator.service';
@@ -16,13 +16,9 @@ export class RepositoryEffects {
         return this.repositoryService.getTopStarredRepositoriesLimitedTo(50).pipe(
           map(({data}) => {
             return RepositoryActions.loadRepositoriesFinished({
-              repositories: this.githubRepositoryTranslatorService.translateRepositoryEdges(data.search.edges)
+              repositories: this.githubRepositoryTranslatorService.translateToGithubRepositories(data.search.edges)
             });
           })
-          // TODO handle error by dispatching error state
-          /*catchError(errorMessage => {
-            // return of(RepositoryActions.loadRepositoriesError({errorMessage: errorMessage}));
-          })*/
         )
       })
     )
