@@ -32,7 +32,7 @@ describe('Test User Selectors', () => {
       entities: {}
     };
     const cachingState: CachingState = {
-      repositoryIdsWithCachedContributions: new Set<String>()
+      repositoryIdsWithCachedContributions: new Set<string>()
     };
     state = {
       repositories: repositoryState,

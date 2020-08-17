@@ -8,7 +8,7 @@ describe('Test Caching Reducer', () => {
 
   beforeEach(() => {
     initialState = {
-      repositoryIdsWithCachedContributions: new Set<String>()
+      repositoryIdsWithCachedContributions: new Set<string>()
     }
   });
 

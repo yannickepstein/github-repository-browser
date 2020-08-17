@@ -3,11 +3,11 @@ import { createReducer, on } from '@ngrx/store';
 import * as CachingActions from './caching.actions';
 
 export interface CachingState {
-  repositoryIdsWithCachedContributions: Set<String>;
+  repositoryIdsWithCachedContributions: Set<string>;
 }
 
 const initialState: CachingState = {
-  repositoryIdsWithCachedContributions: new Set<String>()
+  repositoryIdsWithCachedContributions: new Set<string>()
 };
 
 export const cachingReducer = createReducer(

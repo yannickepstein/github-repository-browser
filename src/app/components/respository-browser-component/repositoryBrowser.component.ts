@@ -6,6 +6,7 @@ import * as RepositoryActions from 'src/app/state/repository/repository.actions'
 import * as ContributionActions from 'src/app/state/contribution/contribution.actions';
 import { GithubRepository } from 'src/app/model/githubRepository';
 import * as RepositorySelectors from 'src/app/state/repository/repository.selectors';
+import * as CachingSelectors from 'src/app/state/caching/caching.selectors';
 
 @Component({
   selector: "repository-browser",
@@ -16,7 +17,7 @@ export class RepositoryBrowserComponent implements OnInit {
   repositories$: Observable<GithubRepository[]>;
   repositorySearchTerm$: Observable<string>;
   selectedRepositoryId$: Observable<string>;
-  loadedRepositoryContributors: { [id: string]: boolean } = {};
+  repositoryIdsWithCachedContributions: Set<string>;
 
   constructor(private store: Store<any>) {}
 
@@ -24,11 +25,16 @@ export class RepositoryBrowserComponent implements OnInit {
     this.repositories$ = this.store.pipe(select(RepositorySelectors.selectAllRepositories));
     this.repositorySearchTerm$ = this.store.pipe(select(RepositorySelectors.selectRepositorySearchTerm));
     this.selectedRepositoryId$ = this.store.pipe(select(RepositorySelectors.selectSelectedRepositoryId));
+    this.store
+      .select(CachingSelectors.selectRepositoryIdsWithCacheContributions)
+      .subscribe(repositoryIds => {
+        this.repositoryIdsWithCachedContributions = repositoryIds;
+      });
     this.store.dispatch(RepositoryActions.loadRepositories());
   }
 
   toggleDetails(repository: GithubRepository) {
-    if (this.loadedRepositoryContributors[repository.id] === undefined) {
+    if (!this.repositoryIdsWithCachedContributions.has(repository.id)) {
       this.loadRepositoryContributors(repository);
     }
     this.store.dispatch(RepositoryActions.selectRepository({ repositoryId: repository.id }));

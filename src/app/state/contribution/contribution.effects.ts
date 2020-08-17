@@ -7,6 +7,7 @@ import { RepositoryContributionsService } from '../../core/services/repositoryCo
 import { GithubUserContributionTranslatorService } from '../../core/services/githubUserContributionTranslator.service';
 import * as ContributionActions from './contribution.actions';
 import * as UserActions from '../user/user.actions';
+import * as CachingActions from '../caching/caching.actions';
 import { GithubUser } from '../../model/githubUser';
 import { GithubContribution } from '../../model/githubContribution';
 
@@ -37,6 +38,7 @@ export class ContributionEffects {
           }),
           mergeMap(repositoryContributions => [
             ContributionActions.loadContributionsOfRepositoryFinished({ contributions: repositoryContributions.contributions }),
+            CachingActions.cacheRepositoryContributions({ contributions: repositoryContributions.contributions }),
             UserActions.loadUsersFinished({ users: repositoryContributions.contributingUsers })
           ])
         )
