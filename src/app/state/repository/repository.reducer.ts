@@ -7,10 +7,12 @@ export const repositoryAdapter = createEntityAdapter<GithubRepository>();
 
 export interface RepositoryState extends EntityState<GithubRepository> {
   searchTerm: string;
+  selectedRepositoryId: string;
 }
 
 const initialState: RepositoryState = {
   searchTerm: undefined,
+  selectedRepositoryId: undefined,
   ...repositoryAdapter.getInitialState()
 };
 

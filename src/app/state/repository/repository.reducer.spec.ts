@@ -15,7 +15,8 @@ describe('Repository State Reducer', () => {
     const initialState: RepositoryState = {
       ids: [],
       entities: {},
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
 
     const state = repositoryReducer(initialState, RepositoryActions.loadRepositories());
@@ -33,7 +34,8 @@ describe('Repository State Reducer', () => {
     const initialState: RepositoryState = {
       ids: [repository1.id],
       entities: getRepositoryEntities([repository1]),
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
     const loadedRepositories = [
       repository2,
@@ -44,7 +46,8 @@ describe('Repository State Reducer', () => {
     const expectedState: RepositoryState = {
       ids: [repository1.id, repository2.id, repository3.id],
       entities: getRepositoryEntities([repository1, repository2, repository3]),
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
 
     expect(state.ids).toEqual(expectedState.ids);
@@ -55,7 +58,8 @@ describe('Repository State Reducer', () => {
     const initialState: RepositoryState = {
       ids: [],
       entities: {},
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
 
     const state = repositoryReducer(initialState, RepositoryActions.filterRepositories({ searchTerm: '' }));
@@ -67,7 +71,8 @@ describe('Repository State Reducer', () => {
     const initialState: RepositoryState = {
       ids: [],
       entities: {},
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
 
     const state = repositoryReducer(initialState, RepositoryActions.filterRepositories({ searchTerm: 'search' }));

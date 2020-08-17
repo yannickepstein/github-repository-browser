@@ -28,7 +28,8 @@ describe('Test Contribution Selectors', () => {
         repoId1: repositories[0],
         repoId2: repositories[1]
       },
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
     const userState: UserState = {
       ids: ['userId1', 'usersId2'],

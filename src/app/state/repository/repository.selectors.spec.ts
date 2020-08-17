@@ -19,7 +19,8 @@ describe('Test Repository Selectors', () => {
         id1: repositories[0],
         id2: repositories[1] 
       },
-      searchTerm: 'abc'
+      searchTerm: 'abc',
+      selectedRepositoryId: undefined
     };
     const userState: UserState = {
       ids: [],

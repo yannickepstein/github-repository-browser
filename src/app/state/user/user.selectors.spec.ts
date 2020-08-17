@@ -16,7 +16,8 @@ describe('Test User Selectors', () => {
     const repositoryState: RepositoryState = {
       ids: [],
       entities: {},
-      searchTerm: undefined
+      searchTerm: undefined,
+      selectedRepositoryId: undefined
     };
     const userState: UserState = {
       ids: ['id1', 'id2'],
