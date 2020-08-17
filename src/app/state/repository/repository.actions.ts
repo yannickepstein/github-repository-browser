@@ -5,7 +5,7 @@ export enum RepositoryActionTypes {
   LoadRepositories = '[Repository] Load Repositories',
   LoadRepositoriesFinished = '[Repository] Load Repositories Finished',
   FilterRepositories = '[Repository] Filter Repositories',
-  SelectRepository = '[Repository] Select Repository'
+  ViewRepositoryDetails = '[Repository] View Repository Details'
 }
 
 export const loadRepositories = createAction(
@@ -22,7 +22,7 @@ export const filterRepositories = createAction(
   props<{ searchTerm: string }>()
 );
 
-export const selectRepository = createAction(
-  RepositoryActionTypes.SelectRepository,
+export const viewRepositoryDetails = createAction(
+  RepositoryActionTypes.ViewRepositoryDetails,
   props<{ repositoryId: string }>()
 );

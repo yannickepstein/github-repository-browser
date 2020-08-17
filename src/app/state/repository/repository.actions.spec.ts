@@ -27,10 +27,10 @@ describe('Test Repository State Actions', () => {
     expect(action.searchTerm).toEqual('search');
   });
 
-  it('Select repository should have correct type and payload', () => {
-    const action = RepositoryActions.selectRepository({ repositoryId: 'id' });
+  it('View repository details should have correct type and payload', () => {
+    const action = RepositoryActions.viewRepositoryDetails({ repositoryId: 'id' });
 
-    expect(action.type).toEqual(RepositoryActionTypes.SelectRepository);
+    expect(action.type).toEqual(RepositoryActionTypes.ViewRepositoryDetails);
     expect(action.repositoryId).toEqual('id');
   });
 });

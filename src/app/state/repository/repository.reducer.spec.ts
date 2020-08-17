@@ -91,7 +91,7 @@ describe('Test Repository State Reducer', () => {
       selectedRepositoryId: undefined
     };
 
-    const state = repositoryReducer(initialState, RepositoryActions.selectRepository({ repositoryId: 'id' }));
+    const state = repositoryReducer(initialState, RepositoryActions.viewRepositoryDetails({ repositoryId: 'id' }));
 
     expect(state.selectedRepositoryId).toEqual('id');
     expect(state.ids).toEqual(initialState.ids);

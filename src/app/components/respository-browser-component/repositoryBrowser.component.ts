@@ -35,13 +35,17 @@ export class RepositoryBrowserComponent implements OnInit {
   }
 
   toggleDetails(repository: GithubRepository) {
-    if (!this.repositoryIdsWithCachedContributions.has(repository.id)) {
-      this.loadRepositoryContributors(repository);
+    if (!this.hasCachedContributions(repository)) {
+      this.loadRepositoryContributions(repository);
     }
-    this.store.dispatch(RepositoryActions.selectRepository({ repositoryId: repository.id }));
+    this.store.dispatch(RepositoryActions.viewRepositoryDetails({ repositoryId: repository.id }));
   }
 
-  loadRepositoryContributors(repository: GithubRepository) {
+  hasCachedContributions(repository: GithubRepository) {
+    return this.repositoryIdsWithCachedContributions.has(repository.id);
+  }
+
+  loadRepositoryContributions(repository: GithubRepository) {
     this.store.dispatch(ContributionActions.loadContributionsOfRepository({ repositoryId: repository.id, repositoryNameAndOwner: repository.nameWithOwner }));
   }
 }

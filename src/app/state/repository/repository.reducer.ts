@@ -28,7 +28,7 @@ export const repositoryReducer = createReducer(
       searchTerm: searchTerm === '' ? undefined : searchTerm
     }
   }),
-  on(RepositoryActions.selectRepository, (state, { repositoryId }) => {
+  on(RepositoryActions.viewRepositoryDetails, (state, { repositoryId }) => {
     return {
       ...state,
       selectedRepositoryId: repositoryId
