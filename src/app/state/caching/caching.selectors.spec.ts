@@ -36,7 +36,7 @@ describe('Test Caching Selectors', () => {
   });
 
   it('Selection of repository ids with cached contributions returns the corresponding set', () => {
-    expect(CachingSelectors.selectRepositoryIdsWithCacheContributions(state))
+    expect(CachingSelectors.selectRepositoryIdsWithCachedContributions(state))
       .toEqual(state.caching.repositoryIdsWithCachedContributions);
   });
 });

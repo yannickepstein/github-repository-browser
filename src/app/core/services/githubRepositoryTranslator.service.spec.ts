@@ -19,7 +19,7 @@ describe('Test GithubRepositoryTranslatorService', () => {
       }
     };
 
-    const translatedRepository = githubRepositoryTranslatorService.translateRepositoryNode(repositoryNode);
+    const translatedRepository = githubRepositoryTranslatorService.translateNodeToGithubRepository(repositoryNode);
     const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", "url", 1000);
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
@@ -38,7 +38,7 @@ describe('Test GithubRepositoryTranslatorService', () => {
       }
     };
 
-    const translatedRepository = githubRepositoryTranslatorService.translateRepositoryEdge(repositoryEdge);
+    const translatedRepository = githubRepositoryTranslatorService.translateEdgeToGithubRepository(repositoryEdge);
     const expectedGithubRepository = new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", "url", 1000);
 
     expect(translatedRepository).toEqual(expectedGithubRepository);
@@ -70,7 +70,7 @@ describe('Test GithubRepositoryTranslatorService', () => {
       }
     ];
 
-    const translatedRepositories = githubRepositoryTranslatorService.translateRepositoryEdges(repositoryEdges);
+    const translatedRepositories = githubRepositoryTranslatorService.translateToGithubRepositories(repositoryEdges);
     const expectedGithubRepositories = [
       new GithubRepository("MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=", "JavaGuide", "user/JavaGuide", 'projectUrl1', 1000),
       new GithubRepository("MDEwOlJlcG9zaXRvcnk1MTExNzgzNw==", "models", "user/models", 'projectUrl2', 5000)

@@ -27,7 +27,7 @@ export class RepositoryBrowserComponent implements OnInit {
     this.repositorySearchTerm$ = this.store.pipe(select(RepositorySelectors.selectRepositorySearchTerm));
     this.selectedRepositoryId$ = this.store.pipe(select(RepositorySelectors.selectSelectedRepositoryId));
     this.store
-      .select(CachingSelectors.selectRepositoryIdsWithCacheContributions)
+      .select(CachingSelectors.selectRepositoryIdsWithCachedContributions)
       .subscribe(repositoryIds => {
         this.repositoryIdsWithCachedContributions = repositoryIds;
       });
