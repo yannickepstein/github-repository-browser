@@ -14,6 +14,6 @@ export class RepositoryFilterPipe implements PipeTransform {
       return repositories;
     }
 
-    return repositories.filter(repository => repository.name.includes(searchTerm));
+    return repositories.filter(repository => repository.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
 }

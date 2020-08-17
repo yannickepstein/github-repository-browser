@@ -31,7 +31,7 @@ describe('Test Repository Search Pipe', () => {
   it('should return all repositories for which the searchTerm is an infix', () => {
     const repositories: GithubRepository[] = [
       new GithubRepository('id1', 'name-javascript-more', 'owner/name', 'url', 10),
-      new GithubRepository('id2', 'hello-javascript', 'owner/name', 'url', 200),
+      new GithubRepository('id2', 'hello-Javascript', 'owner/name', 'url', 200),
       new GithubRepository('id3', 'java-script', 'owner/name', 'url', 12)
     ];
     const searchTerm = 'javascript';
