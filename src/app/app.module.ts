@@ -21,6 +21,7 @@ import { RepositoryContributorComponent } from './components/repository-contribu
 import { RepositoryCardComponent } from './components/repository-card-component/repositoryCard.component';
 import { RepositorySearchComponent } from './components/repository-search-component/repositorySearch.component';
 import { RepostioryDetailsNavbarComponent } from './components/repository-details-navbar-component/repositoryDetailsNavbar.component';
+import { LoadingIndicatorComponent } from './components/loading-indicator-component/loadingIndicator.component';
 
 import { GithubUserUrlPipe } from './core/pipes/githubUserUrl.pipe';
 import { RepositoryFilterPipe } from './core/pipes/repositoryFilter.pipe';
@@ -39,6 +40,7 @@ import { GithubUserContributionTranslatorService } from './core/services/githubU
     RepositoryCardComponent,
     RepositorySearchComponent,
     RepostioryDetailsNavbarComponent,
+    LoadingIndicatorComponent,
     GithubUserUrlPipe,
     RepositoryFilterPipe
   ],

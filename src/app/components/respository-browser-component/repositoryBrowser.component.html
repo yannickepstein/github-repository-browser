@@ -6,6 +6,9 @@
     </div>
     <div class="scrollable-container">
       <div *ngIf="(repositories$ | async) as repositories">
+        <div *ngIf="repositories.length == 0" class="centered-element-container">
+          <loading-indicator style="margin-top: 100px;"></loading-indicator>
+        </div>
         <div *ngFor="let repository of repositories | repositoryFilter: (repositorySearchTerm$ | async)">
           <div
             (click)="toggleDetails(repository)"

@@ -2,3 +2,11 @@
   height: 75vh;
   overflow: scroll;
 }
+
+.centered-element-container {
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  rows: 2fr;
+  columns: 1fr;
+}
