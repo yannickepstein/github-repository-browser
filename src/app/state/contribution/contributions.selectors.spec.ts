@@ -6,6 +6,7 @@ import { GithubUser } from 'src/app/model/githubUser';
 import { GithubRepository } from 'src/app/model/githubRepository';
 import { GithubContribution } from 'src/app/model/githubContribution';
 import * as ContributionSelectors from './contribution.selectors';
+import { CachingState } from '../caching/caching.reducer';
 
 describe('Test Contribution Selectors', () => {
   let state: State;
@@ -44,10 +45,14 @@ describe('Test Contribution Selectors', () => {
         contribId1: contributions[0]
       }
     };
+    const cachingState: CachingState = {
+      repositoryIdsWithCachedContributions: new Set<String>()
+    };
     state = {
       repositories: repositoryState,
       users: userState,
-      contributions: contributionState
+      contributions: contributionState,
+      caching: cachingState
     };
   });
 

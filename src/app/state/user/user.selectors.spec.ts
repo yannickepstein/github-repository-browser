@@ -4,6 +4,7 @@ import { UserState } from './user.redcuer';
 import { ContributionState } from '../contribution/contribution.reducer';
 import { GithubUser } from 'src/app/model/githubUser';
 import * as UserSelectors from './user.selectors';
+import { CachingState } from '../caching/caching.reducer';
 
 describe('Test User Selectors', () => {
   let state: State;
@@ -30,10 +31,14 @@ describe('Test User Selectors', () => {
       ids: [],
       entities: {}
     };
+    const cachingState: CachingState = {
+      repositoryIdsWithCachedContributions: new Set<String>()
+    };
     state = {
       repositories: repositoryState,
       users: userState,
-      contributions: contributionState
+      contributions: contributionState,
+      caching: cachingState
     };
   });
 

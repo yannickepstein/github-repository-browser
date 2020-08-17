@@ -4,6 +4,7 @@ import { GithubRepository } from 'src/app/model/githubRepository';
 import { UserState } from '../user/user.redcuer';
 import { ContributionState } from '../contribution/contribution.reducer';
 import * as RepositorySelectors from './repository.selectors';
+import { CachingState } from '../caching/caching.reducer';
 
 describe('Test Repository Selectors', () => {
   let state: State;
@@ -30,10 +31,14 @@ describe('Test Repository Selectors', () => {
       ids: [],
       entities: {}
     };
+    const cachingState: CachingState = {
+      repositoryIdsWithCachedContributions: new Set<String>()
+    };
     state = {
       repositories: repositoryState,
       users: userState,
-      contributions: contributionState
+      contributions: contributionState,
+      caching: cachingState
     };
   });
 
