@@ -1,2 +1,2 @@
-describe('RepositoryBrowserComponent', () => {
+describe('Test RepositoryBrowserComponent', () => {
 });

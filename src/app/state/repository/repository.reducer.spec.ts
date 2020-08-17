@@ -2,7 +2,7 @@ import { RepositoryState, repositoryReducer } from './repository.reducer';
 import * as RepositoryActions from './repository.actions';
 import { GithubRepository } from 'src/app/model/githubRepository';
 
-describe('Repository State Reducer', () => {
+describe('Test Repository State Reducer', () => {
   function getRepositoryEntities(repositories: GithubRepository[]): any {
     const entities = {};
     repositories.forEach(repository => {

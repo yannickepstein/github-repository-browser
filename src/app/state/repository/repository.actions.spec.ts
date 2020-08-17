@@ -2,7 +2,7 @@ import { RepositoryActionTypes } from './repository.actions';
 import * as RepositoryActions from './repository.actions';
 import { GithubRepository } from '../../model/githubRepository';
 
-describe('Repository State Actions', () => {
+describe('Test Repository State Actions', () => {
   it('Load Repositories has correct type', () => {
     const action = RepositoryActions.loadRepositories();
 

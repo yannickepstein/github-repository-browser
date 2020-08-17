@@ -1,7 +1,7 @@
 import { RepositoryFilterPipe } from './repositoryFilter.pipe';
 import { GithubRepository } from 'src/app/model/githubRepository';
 
-describe('Repository Search Pipe Test', () => {
+describe('Test Repository Search Pipe', () => {
   let repositoryFilterPipe: RepositoryFilterPipe;
 
   beforeAll(() => {

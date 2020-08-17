@@ -1,6 +1,6 @@
 import { GithubUserUrlPipe } from './githubUserUrl.pipe';
 
-describe('Github User URL Pipe', () => {
+describe('Test Github User URL Pipe', () => {
   let githubUserUrlPipe: GithubUserUrlPipe;
 
   beforeEach(() => {

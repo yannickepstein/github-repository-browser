@@ -1,7 +1,7 @@
 import { GithubRepositoryTranslatorService } from './githubRepositoryTranslator.service';
 import { GithubRepository } from 'src/app/model/githubRepository';
 
-describe('GithubRepositoryTranslatorService', () => {
+describe('Test GithubRepositoryTranslatorService', () => {
   let githubRepositoryTranslatorService: GithubRepositoryTranslatorService;
 
   beforeEach(() => {
