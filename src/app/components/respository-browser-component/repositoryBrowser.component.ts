@@ -10,7 +10,8 @@ import * as CachingSelectors from 'src/app/state/caching/caching.selectors';
 
 @Component({
   selector: "repository-browser",
-  templateUrl: "./repositoryBrowser.component.html"
+  templateUrl: "./repositoryBrowser.component.html",
+  styleUrls: ['./repositoryBrowser.component.css']
 })
 export class RepositoryBrowserComponent implements OnInit {
 

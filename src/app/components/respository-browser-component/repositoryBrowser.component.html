@@ -14,9 +14,8 @@
             (click)="toggleDetails(repository)"
           >
             <div
-              class="box"
+              class="box repository-card-margins"
               [ngClass]="(selectedRepositoryId$ | async) === repository.id ? 'has-background-primary' : ''"
-              style="margin-bottom: 10px; margin-right: 10px; margin-left: 10px;"
             >
               <repository-card [repository]="repository"></repository-card>
             </div>
