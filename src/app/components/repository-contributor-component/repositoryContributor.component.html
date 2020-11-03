@@ -10,7 +10,9 @@
         <p>
           <strong>{{ contributingUser.login }}</strong>
           <br>
-          <a href="{{ contributingUser.login | githubUserUrl }}">
+          <a
+            (click)="openInNewTab(githubUserUrlPipe.transform(contributingUser.login))"
+          >
             <small>{{ contributingUser.login | githubUserUrl }}</small>
           </a>
         </p>

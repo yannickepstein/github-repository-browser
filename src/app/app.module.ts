@@ -59,7 +59,8 @@ import { GithubUserContributionTranslatorService } from './core/services/githubU
     RepositoryService,
     RepositoryContributionsService,
     GithubRepositoryTranslatorService,
-    GithubUserContributionTranslatorService
+    GithubUserContributionTranslatorService,
+    GithubUserUrlPipe
   ],
   bootstrap: [AppComponent]
 })
