@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { WebBrowserService } from 'src/app/core/services/webBrowser.service';
 
 import { GithubRepository } from '../../model/githubRepository';
 
@@ -9,4 +10,10 @@ import { GithubRepository } from '../../model/githubRepository';
 export class RepositoryCardComponent {
 
   @Input() repository: GithubRepository;
+
+  constructor(private webBrowserService: WebBrowserService) {}
+
+  openRepositoryInNewTab(repositoryURL: string) {
+    this.webBrowserService.openURLInNewTab(repositoryURL);
+  }
 }

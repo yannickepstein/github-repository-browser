@@ -11,7 +11,7 @@
           <strong>{{ contributingUser.login }}</strong>
           <br>
           <a
-            (click)="openInNewTab(githubUserUrlPipe.transform(contributingUser.login))"
+            (click)="openProfileInNewTab(contributingUser.login)"
           >
             <small>{{ contributingUser.login | githubUserUrl }}</small>
           </a>

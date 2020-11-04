@@ -30,6 +30,7 @@ import { RepositoryService } from './core/services/repository.service';
 import { RepositoryContributionsService } from './core/services/repositoryContributions.service';
 import { GithubRepositoryTranslatorService } from './core/services/githubRepositoryTranslator.service';
 import { GithubUserContributionTranslatorService } from './core/services/githubUserContributionTranslator.service';
+import { WebBrowserService } from './core/services/webBrowser.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { GithubUserContributionTranslatorService } from './core/services/githubU
     RepositoryContributionsService,
     GithubRepositoryTranslatorService,
     GithubUserContributionTranslatorService,
-    GithubUserUrlPipe
+    GithubUserUrlPipe,
+    WebBrowserService
   ],
   bootstrap: [AppComponent]
 })

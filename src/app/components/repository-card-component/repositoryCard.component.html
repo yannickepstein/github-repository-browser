@@ -5,7 +5,7 @@
         <p class="title is-4">{{ repository.name }}</p>
         <p class="subtitle is-6">&#9733; {{ repository.stars }}</p>
       </div>
-      <a href="{{ repository.url }}">
+      <a (click)="openRepositoryInNewTab(repository.url)">
         <small>{{ repository.url }}</small>
       </a>
     </div>
